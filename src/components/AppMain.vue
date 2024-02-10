@@ -27,12 +27,13 @@ export default {
     <div class="container">
       <div class="row">
         <div
-          class="col-5 cards"
+          class="col-12 col-sm-6 col-lg-4"
           v-for="character in characters.data"
-          :key="id + '_character'"
+          :key="character.id + '_character'"
         >
-          <img :src="character.card_images" alt="" />
-          {{ character.name }}
+          <img :src="character.card_images.image_url_small" alt="" />
+          <h3>{{ character.name }}</h3>
+          <p>{{ character.archetype }}</p>
         </div>
       </div>
     </div>

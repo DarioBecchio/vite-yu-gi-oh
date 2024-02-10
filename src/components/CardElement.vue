@@ -7,16 +7,19 @@ export default {
 };
 </script>
 <template>
-  <div
-    class="col-12 col-sm-6 col-lg-4"
-    v-for="character in characters.data"
-    :key="character.id + '_character'"
-  >
+  <div class="col-12 col-sm-6 col-lg-4">
     <div class="card">
-      <img src="" alt="" />
+      <img :src="character.card_images[0].image_url_small" alt="" />
       <h3>{{ character.name }}</h3>
       <p>{{ character.archetype }}</p>
     </div>
   </div>
 </template>
-<style></style>
+<style scoped>
+.card {
+  background-color: orange;
+  & > img {
+    width: 100%;
+  }
+}
+</style>

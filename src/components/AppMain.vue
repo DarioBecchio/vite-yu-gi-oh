@@ -3,6 +3,7 @@ import axios from "axios";
 import CardElement from "./CardElement.vue";
 export default {
   name: "AppMain",
+  components: { CardElement },
   data() {
     return {
       base_api_url:
@@ -21,7 +22,6 @@ export default {
         console.error(error.message);
       });
   },
-  components: { CardElement },
 };
 </script>
 <template>
@@ -37,11 +37,4 @@ export default {
     </div>
   </main>
 </template>
-<style>
-.card {
-  background-color: orange;
-  & > img {
-    width: 100%;
-  }
-}
-</style>
+<style></style>

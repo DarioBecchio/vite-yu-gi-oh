@@ -4,7 +4,7 @@ export default {
   name: "App",
   data() {
     return {
-      base_api_url: "",
+      base_api_url: "https://db.ygoprodeck.com/api/v7/cardinfo.php",
     };
   },
   mounted() {

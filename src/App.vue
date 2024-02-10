@@ -1,16 +1,14 @@
 <script>
-import axios from "axios";
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+import AppFooter from "./components/AppFooter.vue";
 export default {
   name: "App",
-  data() {
-    return {
-      base_api_url: "https://db.ygoprodeck.com/api/v7/cardinfo.php",
-    };
-  },
-  mounted() {
-    axios.get("").then((response) => {
-      console.log(response);
-    });
+
+  components: {
+    AppHeader,
+    AppMain,
+    AppFooter,
   },
 };
 </script>

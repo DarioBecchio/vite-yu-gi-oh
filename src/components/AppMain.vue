@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import CardElement from "./CardElement.vue";
 export default {
   name: "AppMain",
   data() {
@@ -20,23 +21,27 @@ export default {
         console.error(error.message);
       });
   },
+  components: { CardElement },
 };
 </script>
 <template>
   <main>
     <div class="container">
       <div class="row">
-        <div
-          class="col-12 col-sm-6 col-lg-4"
+        <CardElement
           v-for="character in characters.data"
           :key="character.id + '_character'"
-        >
-          <img :src="character.card_images.image_url_small" alt="" />
-          <h3>{{ character.name }}</h3>
-          <p>{{ character.archetype }}</p>
-        </div>
+          :character="character"
+        ></CardElement>
       </div>
     </div>
   </main>
 </template>
-<style></style>
+<style>
+.card {
+  background-color: orange;
+  & > img {
+    width: 100%;
+  }
+}
+</style>

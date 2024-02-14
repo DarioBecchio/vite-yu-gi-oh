@@ -13,12 +13,7 @@ export default {
     };
   },
   methods: {},
-  computed: {
-    publishedBooksMessage() {
-      // `this` points to the component instance
-      return this.components.name.length;
-    },
-  },
+  computed: {},
   mounted() {
     axios
       .get(this.base_api_url)
@@ -35,7 +30,13 @@ export default {
 <template>
   <main>
     <div class="container">
-      <FilterElement></FilterElement>
+      <div class="filters">
+        <FilterElement
+          v-for="character in characters.data"
+          :key="character.id + '_character'"
+          :character="character"
+        ></FilterElement>
+      </div>
       <div class="row">
         <CardElement
           v-for="character in characters.data"
@@ -43,7 +44,6 @@ export default {
           :character="character"
         ></CardElement>
       </div>
-      {{}}
     </div>
   </main>
 </template>

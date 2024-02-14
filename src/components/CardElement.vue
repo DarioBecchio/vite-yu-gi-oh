@@ -11,7 +11,7 @@ export default {
     <div class="card">
       <img :src="character.card_images[0].image_url_small" alt="" />
       <h3>{{ character.name }}</h3>
-      <p>{{ character.archetype }}</p>
+      <p>{{ character.archetype || character.type }}</p>
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@ export default {
 };
 </script>
 <template>
-  <div class="col-12 col-sm-6 col-lg-4">
+  <div class="col-12 col-sm-6 col-lg-5 col-xl-3">
     <div class="card">
       <img :src="character.card_images[0].image_url_small" alt="" />
       <h3>{{ character.name }}</h3>

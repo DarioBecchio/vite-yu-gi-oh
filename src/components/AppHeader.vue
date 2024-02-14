@@ -4,6 +4,18 @@ export default {
 };
 </script>
 <template>
-  <header>header</header>
+  <header>
+    <div class="container">
+      <h2>Yu-Gi-Oh Api</h2>
+    </div>
+  </header>
 </template>
-<style></style>
+<style>
+header {
+  background-color: white;
+  & > h2 {
+    color: black;
+    margin: 1rem 0;
+  }
+}
+</style>

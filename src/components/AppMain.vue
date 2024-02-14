@@ -1,9 +1,10 @@
 <script>
 import axios from "axios";
 import CardElement from "./CardElement.vue";
+import FilterElement from "./FilterElement.vue";
 export default {
   name: "AppMain",
-  components: { CardElement },
+  components: { CardElement, FilterElement },
   data() {
     return {
       base_api_url:
@@ -34,14 +35,7 @@ export default {
 <template>
   <main>
     <div class="container">
-      <div class="filters">
-        <select name="archetype" id="">
-          <option value="Alien">Alien</option>
-          <option value="Noble Knight">Noble Knight</option>
-          <option value="Infernoble Arms">Infernoble Arms</option>
-          <option value="Melodious">Melodious</option>
-        </select>
-      </div>
+      <FilterElement></FilterElement>
       <div class="row">
         <CardElement
           v-for="character in characters.data"

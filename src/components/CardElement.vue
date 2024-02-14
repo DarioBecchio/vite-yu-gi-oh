@@ -18,8 +18,16 @@ export default {
 <style scoped>
 .card {
   background-color: orange;
+  text-align: center;
   & > img {
     width: 100%;
+  }
+  & h3 {
+    color: white;
+    font-weight: 600;
+  }
+  & p {
+    color: black;
   }
 }
 </style>

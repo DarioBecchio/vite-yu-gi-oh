@@ -2,15 +2,13 @@
 export default {
   name: "FilterElement",
   props: {
-    character: Object,
+    type: String,
   },
 };
 </script>
 <template>
-  <select name="archetype" id="">
-    <option :value="character.archetype">
-      {{ character.archetype }}
-    </option>
-  </select>
+  <option :value="type" :key="type">
+    {{ type }}
+  </option>
 </template>
 <style></style>

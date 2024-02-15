@@ -9,21 +9,34 @@ export default {
     return {
       base_api_url:
         "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0",
-      characters: " ",
+      characters: [],
+      types: [],
+      selectedTypes: "",
     };
   },
-  methods: {},
+  methods: {
+    chooseTypes() {
+      axios
+        .get(this.base_api_url)
+        .then((response) => {
+          this.characters = response.data.data;
+          this.characters.forEach((element) => {
+            if (element.archetype) {
+              const type = element.archetype;
+              if (!this.types.includes(type)) {
+                this.types.push(type);
+              }
+            }
+          });
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    },
+  },
   computed: {},
   mounted() {
-    axios
-      .get(this.base_api_url)
-      .then((response) => {
-        console.log(this);
-        this.characters = response.data;
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
+    this.chooseTypes();
   },
 };
 </script>
@@ -31,15 +44,22 @@ export default {
   <main>
     <div class="container">
       <div class="filters">
-        <FilterElement
-          v-for="character in characters.data"
-          :key="character.id + '_character'"
-          :character="character"
-        ></FilterElement>
+        <select
+          v-model="selectedTypes"
+          @change="chooseTypes()"
+          name="archetype"
+          id=""
+        >
+          <FilterElement
+            v-for="(option, index) in types"
+            :key="index"
+            :type="option"
+          ></FilterElement>
+        </select>
       </div>
       <div class="row">
         <CardElement
-          v-for="character in characters.data"
+          v-for="character in characters"
           :key="character.id + '_character'"
           :character="character"
         ></CardElement>

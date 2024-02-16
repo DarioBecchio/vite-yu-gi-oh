@@ -1,4 +1,5 @@
 <script>
+import { store } from "../store.js";
 import axios from "axios";
 import CardElement from "./CardElement.vue";
 import FilterElement from "./FilterElement.vue";
@@ -7,17 +8,17 @@ export default {
   components: { CardElement, FilterElement },
   data() {
     return {
-      base_api_url:
-        "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0",
+      //base_api_url:"https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0",
       characters: [],
       types: [],
       selectedTypes: "",
+      store,
     };
   },
   methods: {
     chooseTypes() {
       axios
-        .get(this.base_api_url)
+        .get(store.base_api_url)
         .then((response) => {
           this.characters = response.data.data;
           this.characters.forEach((element) => {
@@ -28,7 +29,9 @@ export default {
               }
             }
           });
+          console.log(this.selectedTypes);
         })
+
         .catch((error) => {
           console.error(error.message);
         });
